@@ -1,10 +1,23 @@
-
-
+import React from 'react'
+import { Route, Redirect } from "react-router-dom";
+import ChooseLogin from "./components/auth/choose_login"
 
 const ApplicationViews = props => {
+    const hasUser = props.hasUser
+    const setHasUser=props.setHasUser
+    const clearUser = props.clearUser
+
     return (
         <>
-        <h1>Hi</h1>
+        <Route 
+        exact path = "/login"
+        render ={ props => {
+            return <ChooseLogin {...props} />
+        }}
+        />
+        
         </>
     )
 }
+
+export default ApplicationViews

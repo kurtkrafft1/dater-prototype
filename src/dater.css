@@ -1,0 +1,20 @@
+html, body {
+    margin: 0;
+    background: var(--grey);
+}
+
+:root {
+    --main-color: #AB4E68;
+    --off-white: rgb(223, 221, 217);
+    --grey :  rgb(190, 190, 189);
+    --vib-red: #93032E;
+    
+}
+
+#root {
+    height: 100%;
+    background: var(--grey);
+}
+.test-margin{
+    margin-top: 0;
+}

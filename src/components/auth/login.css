@@ -1,0 +1,31 @@
+.email-choice{
+    height: 330px;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom right,  rgb(211, 44, 44),rgb(150, 12, 53));
+    border-radius: 0px 0px 10px 10px;
+}
+
+
+
+.email-button{
+    background-color: var(--off-white);
+    width: 200px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    font-family: 'Karla', sans-serif;
+}
+
+
+.facebook-choice{
+    background-color: grey;
+    height: var(--grey);
+}
