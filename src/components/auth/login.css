@@ -26,6 +26,34 @@
 
 
 .facebook-choice{
-    background-color: grey;
-    height: var(--grey);
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+}
+.add-right{
+    margin-right: 10px !important;
+}
+
+.copyright {
+    color: rgba(12, 12, 12, 0.692);
+    font-size: 0.9rem;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    text-align: center;
+    
+    
+}
+
+.TnC:link{
+    color: rgba(0, 0, 0, 0.712);
+}
+.TnC:visited{
+    color: rgba(0, 0, 0, 0.61);
+}
+
+.firebaseui-idp-button{
+    border-radius: 40px !important;
 }
