@@ -1,0 +1,70 @@
+.email-choice{
+    height: 330px;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom right,  rgb(211, 44, 44),rgb(150, 12, 53));
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 1px 0 1px 3px rgba(97, 97, 97, 0.219);
+}
+
+
+
+.email-button{
+    
+    background-color: var(--off-white);
+    width: 200px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    font-family: var(--main-font);
+    transition: ease 0.3s;
+    
+
+}
+
+
+.email-button:hover{
+    background-color: rgba(128, 128, 128, 0.596);
+    transition: ease 0.3s;
+}
+
+
+.facebook-choice{
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+}
+.add-right{
+    margin-right: 10px !important;
+}
+
+.copyright {
+    color: rgba(12, 12, 12, 0.692);
+    font-size: 0.9rem;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    text-align: center;
+    
+    
+}
+
+.TnC:link{
+    color: rgba(0, 0, 0, 0.712);
+}
+.TnC:visited{
+    color: rgba(0, 0, 0, 0.61);
+}
+
+.firebaseui-idp-button{
+    border-radius: 40px !important;
+}

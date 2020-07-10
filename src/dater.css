@@ -1,0 +1,22 @@
+html, body {
+    margin: 0;
+    background: var(--grey);
+}
+
+:root {
+    --main-color: #AB4E68;
+    --off-white: rgb(223, 221, 217);
+    --grey :  rgb(231, 231, 231);
+    --vib-red: #93032E;
+
+    --main-font : 'Karla', sans-serif;
+    
+}
+
+#root {
+    height: 100%;
+    background: var(--grey);
+}
+.test-margin{
+    margin-top: 0;
+}

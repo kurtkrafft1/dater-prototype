@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import ApplicationViews from "./ApplicationViews";
-import Sidebar from "./components/navbar"
+import Navbar from "./components/navbar/navbar"
+import "./dater.css"
 
 const Dater = props => {
     const isAuthenticated = () => sessionStorage.getItem("token") !== null;
@@ -13,9 +14,7 @@ const Dater = props => {
 
       return (
           <>
-            <Sidebar />
-            <ApplicationViews />
-            <h1>Hi</h1>
+            <ApplicationViews hasUser={hasUser} setHasUser={setHasUser} clearUser={clearUser}  {...props}/>
           </>
       )
 }
