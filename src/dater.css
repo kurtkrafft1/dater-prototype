@@ -6,8 +6,10 @@ html, body {
 :root {
     --main-color: #AB4E68;
     --off-white: rgb(223, 221, 217);
-    --grey :  rgb(190, 190, 189);
+    --grey :  rgb(231, 231, 231);
     --vib-red: #93032E;
+
+    --main-font : 'Karla', sans-serif;
     
 }
 

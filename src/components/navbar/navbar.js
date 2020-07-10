@@ -20,7 +20,7 @@ const Navbar = props => {
                 <NavLink activeClassName="navlink act-link" className="navlink"to="/" isActive={checkActive}>Home</NavLink>
                 <NavLink activeClassName="navlink act-link" className="navlink" to="/past_dates">Past Dates</NavLink>
                 <NavLink activeClassName="navlink act-link" className="navlink" to="Account">Account</NavLink>
-                <NavLink activeClassName="navlink act-link" className="navlink" to="/login">Logout</NavLink>
+                <a className="navlink primary-color" onClick={()=> {props.clearUser() ; props.history.push('/login')}}>Logout</a>
             </Menu>
             <div className="header">
             <h1 className="datr-title">Datr</h1>

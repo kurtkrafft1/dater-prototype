@@ -34,7 +34,7 @@ const ChooseLogin = props => {
         <div className="email-choice">
         <h1 className="datr-title add-right">Datr</h1>
 
-        <div className="email-button">
+        <div className="email-button" onClick={()=> props.history.push('email_login')}>
             <span>Email Sign in</span>
         </div>
             

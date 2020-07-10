@@ -14,8 +14,6 @@ const Dater = props => {
 
       return (
           <>
-          
-            {hasUser? <Navbar /> : ""}
             <ApplicationViews hasUser={hasUser} setHasUser={setHasUser} clearUser={clearUser}  {...props}/>
           </>
       )
