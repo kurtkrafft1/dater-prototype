@@ -74,14 +74,15 @@
       display: flex;
       justify-content: center;
       background-image: linear-gradient(to right, rgb(211, 44, 44),rgb(150, 12, 53)) ;
-      box-shadow: 1px 0 1px 3px rgba(97, 97, 97, 0.219);
+      box-shadow: 0 5px 15px rgba(0,0,0,.6);
       padding-top: 7px;
       padding-bottom: 7px;
+      border-radius: 0px 0px 5px 5px;
   }
 
 .datr-title{
     color: var(--off-white);
-    font-family: 'Karla', sans-serif;
+    font-family: var(--main-font);
     font-weight: 700;
     font-size: 40px;
     margin: 0;
@@ -92,7 +93,7 @@
     color: var(--main-color);
     margin-bottom: 60px;
     text-decoration: none;
-    font-family: 'Karla', sans-serif;
+    font-family: var(--main-font);
 }
 .navlink:visited {
     color: var(--main-color);
@@ -103,4 +104,8 @@
     text-decoration: underline !important;
     color: rgba(171, 78, 104, 0.76) !important;
     outline: none;
+}
+
+.primary-color{
+    color: var(--main-color);
 }
