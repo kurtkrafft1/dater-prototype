@@ -3,11 +3,12 @@ import "./login.css"
 import firebase from "firebase"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
+firebase.initializeApp({
+    apiKey: "AIzaSyCzvwzt_1Hq7n10rEVBAZ0dmHtsz0_4CrI",
+    authDomain: "dater-385dc.firebaseapp.com"
+});
+
 const ChooseLogin = props => {
-    firebase.initializeApp({
-        apiKey: "AIzaSyCzvwzt_1Hq7n10rEVBAZ0dmHtsz0_4CrI",
-        authDomain: "dater-385dc.firebaseapp.com"
-    })
 
     const [isSignedIn, setIsSignedIn] = useState(false)
 
