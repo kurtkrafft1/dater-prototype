@@ -20,3 +20,7 @@ html, body {
 .test-margin{
     margin-top: 0;
 }
+
+.main-font{
+    font-family:  var(--main-font);
+}
