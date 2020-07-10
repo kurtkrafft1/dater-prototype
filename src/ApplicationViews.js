@@ -4,6 +4,7 @@ import ChooseLogin from "./components/auth/choose_login"
 import EmailLogin from "./components/auth/login"
 import Navbar from "./components/navbar/navbar"
 import Register from "./components/auth/register"
+import Home from "./components/home/home"
 
 const ApplicationViews = props => {
     const hasUser = props.hasUser
@@ -13,13 +14,25 @@ const ApplicationViews = props => {
     return (
         <>
         {hasUser? 
+        <>
         <Route 
         path=""
         render={
             props=> {
                 return <Navbar clearUser={clearUser} {...props}/>
             }
-        }/> : ""}
+        }/> 
+        
+        <Route 
+        exact path = '/'
+        render={
+            props=> {
+                return <Home {...props} />
+            }
+        }
+        />
+        </>
+        : ""}
         <Route 
         exact path = "/login"
         render ={ props => {
