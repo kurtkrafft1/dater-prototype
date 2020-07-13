@@ -3,18 +3,13 @@ import baseUrl from "./baseUrl"
 export default{
     getAllDatesEvenArchived(token){
         // debugger
-        return fetch(`${baseUrl}past_dates?count`, {
+        return fetch(`${baseUrl}past_dates?all`, {
             method: "GET",
-           
             headers: {
+                "Content-Type": "Application/json",
                 "Accept": "Application/json",
-                // "Access-Control-Expose-Headers": "Token",
-                // "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                // "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
-                "Token": `${token}`
+                "Authorization": `${token}`
             }
-        }).then(r=> {
-            console.log(r)
-            r.json()})
+        }).then(r=> r.json())
     }
 }
