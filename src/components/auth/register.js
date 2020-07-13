@@ -16,7 +16,7 @@ const Register = props => {
 
     const handleSubmit= e=> {
         e.preventDefault()
-        console.log('submit')
+
         if(user['email']==="" ||user['password']==="" ||user['confirm_password']==="" ||user['first_name']==="" ||user['last_name']==="" ||user['dob-day']==="" ||user['dob-month']==="" ||user['dob-year']===""){
             setErrorMessage("Please fill in all the required fields")
         }

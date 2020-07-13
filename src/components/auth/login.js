@@ -16,7 +16,7 @@ const EmailLogin = props => {
         e.preventDefault()
         AM.loginUser(credentials).then(resp=> {
             if(resp.valid===false){
-                console.log(resp)
+
                 if(resp.error==="Verify Email"){
                     setErrorMessage("Please Verify Your Email")
                 }
@@ -25,7 +25,7 @@ const EmailLogin = props => {
                 }
             }
             if(resp.valid===true){
-                console.log(resp)
+            
                 sessionStorage.setItem('token', resp.token)
                 props.setHasUser(true)
                 props.history.push('/')
