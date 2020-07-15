@@ -70,7 +70,7 @@ const Home = props => {
                         <div className="time-holder">
                         {numberOfDates !== 0 ? (<span className="">Your last date was <span className="underline"><TimeAgo date={mostRecentDate.created_at} formatter={formatter} /></span> </span>) : "" }
                         </div>
-                        <div className="submit-btn primary-btn " >
+                        <div className="submit-btn primary-btn " onClick={()=>props.history.push('/newdate')}>
                             <span>Start a New Date</span>
                         </div>
                     </div>
