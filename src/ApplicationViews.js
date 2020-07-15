@@ -5,6 +5,7 @@ import EmailLogin from "./components/auth/login"
 import Navbar from "./components/navbar/navbar"
 import Register from "./components/auth/register"
 import Home from "./components/home/home"
+import NewDate from "./components/new_date/new_date"
 
 const ApplicationViews = props => {
     const hasUser = props.hasUser
@@ -28,6 +29,14 @@ const ApplicationViews = props => {
         render={
             props=> {
                 return <Home {...props} />
+            }
+        }
+        />
+        <Route 
+        exact path = '/newdate'
+        render={
+            props=> {
+                return <NewDate {...props} />
             }
         }
         />
