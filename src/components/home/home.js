@@ -19,38 +19,50 @@ const Home = props => {
     const token = sessionStorage.getItem('token')
 
     useEffect(()=> {
+        setIsLoading(true)
         // get number of dates user has been on
-        DM.getAllDatesEvenArchived(token).then(arr=> {
-            //total number of dates
-            setNumberOfDates(arr.length)
-            //get the array in the right order
-            arr.reverse()
-            //get all the ones that aren't deleted and then get the first and most recent one
-            const notDeleted = arr.filter(obj=> obj.deleted === null)
-            setMostRecentDate(notDeleted[0])
-            //get all the dates that are favorited and get the amount of them
-            const favorited = arr.filter(obj => obj.is_favorite === true)
-            setFaveDates(favorited.length)
-        })
-        //getUserInfo
-        AM.getUserInfo(token).then(obj=>{
-            setUserInfo(obj)}).then(()=> {
-                setIsLoading(false)
+        if(isLoading){
+            DM.getAllDatesEvenArchived(token).then(arr=> {
+                //total number of dates
+                setNumberOfDates(arr.length)
+                //get the array in the right order
+                arr.reverse()
+                //get all the ones that aren't deleted and then get the first and most recent one
+                const notDeleted = arr.filter(obj=> obj.deleted === null)
+                setMostRecentDate(notDeleted[0])
+                //get all the dates that are favorited and get the amount of them
+                const favorited = arr.filter(obj => obj.is_favorite === true)
+                setFaveDates(favorited.length)
             })
+            //getUserInfo
+            AM.getUserInfo(token).then(obj=>{
+                setUserInfo(obj)}).then(()=> {
+                    setIsLoading(false)
+                })
+        }
+        
 
     },[])
-    if(isLoading){
-       return ( 
-       <>
+    // if(isLoading){
+    //    return ( 
+    //    <>
+    //         <div className="loader-holder">
+    //             <div className="loader"></div>
+    //         </div>
+    //     </>
+    //     )
+    // }
+    // else{
+    return (
+        <>
+        {isLoading ? (
+            <>
             <div className="loader-holder">
                 <div className="loader"></div>
             </div>
         </>
-        )
-    }
-    else{
-    return (
-        <div className="home-body">
+
+        ) : (<div className="home-body">
             <div className="welcome-user">
                 <div className="welcome-header">
                     <h1 className="welcome-title">Welcome {userInfo.name.split(" ")[0]} </h1>
@@ -78,8 +90,9 @@ const Home = props => {
                 
 
             </div>
-        </div>
-    )}
+        </div>)}
+        </>
+    )
 
 }
 export default Home

@@ -23,16 +23,26 @@ const NewDate = props => {
     const [dateView, setDateView] = useState(null)
     const [isViewing, setIsViewing] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const [ stops, setStops] = useState({})
     const [compDate, setCompDate] = useState({})
-    const lat = '36.1627'
-    const lng = '-86.7816'
+    const [lat, setLat] = useState('')
+    const [lng, setLng] = useState('')
+    // const lat = '36.1627'
+    // const lng = '-86.7816'
 
     useEffect(()=> {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            // console.log("Latitude is :", position.coords.latitude);
+            setLat(position.coords.latitude)
+            // console.log("Longitude is :", position.coords.longitude);
+            setLng(position.coords.longitude)
+          });
         
     },[])
 
+    //bread and butter function 
     const createDate = () => {
+        // debugger
+        // console.log(lat, lng)
         setIsLoading(true)
         //create a date that has empty stops and the 'users' location 
         const date = {
@@ -53,6 +63,7 @@ const NewDate = props => {
                     let stop = arr[getRandomInt(arr.length)]
                     //check to see that the stop isn't breakfast lunch or dinner (7,8,10)
                     if(stop.id === 7 || stop.id === 8 || stop.id ===10){
+                        
                         stop = arr[getRandomInt(arr.length)]
                     }else {
                         //check to see if the time fo the date is break fast and if the selected id is bars that might not be a good idea
@@ -60,11 +71,14 @@ const NewDate = props => {
                             stop = arr[getRandomInt(arr.length)]
                         }else {
                             //set stop one to this. (may add desert filter as well)
-                            date['stopOne'] = `${stop.name}`
-                        }
-                        
+                            if(stop === undefined){
+                                stop = arr[getRandomInt(arr.length)]
+                            }else {
+                                date['stopOne'] = `${stop.name}`
+                            }
+                            
+                        } 
                     }
-                    
                 }
                 //for the Second Stop (always going to be food)
                 if(i===1 && diet !=='none'){
@@ -104,7 +118,6 @@ const NewDate = props => {
                         
                     }
                 }
-                
             } else {
                 //So they selected just drinks then we will simplify it and only have two stops
                 if(i===0){
@@ -120,9 +133,7 @@ const NewDate = props => {
                             //set that date option
                             date['stopOne'] = `${stop.name}`
                         }
-
                     }
-                    
                 } 
                 if (i===1){
                     // for the second stop we will automatically make it bars
@@ -132,11 +143,8 @@ const NewDate = props => {
                     //no third stop
                     date['stopThree'] = ""
                 }
-
             }
-
            }
-            
         }).then(()=> {
             //create the new date for the user
         const newDate = {
@@ -144,35 +152,62 @@ const NewDate = props => {
             'stop_two': {},
             'stop_three': {}
         }
-        for(let i = 0; i<3; i++){
-            //for the first stop
-            if(i===0){
-                console.log(date.stopOne.replace(' ', "+"))
-                //fetch from the google maps api using the location keyword(with replaced spaces)
-                GMM.getStopTwo({"location": date.location, "keyword": date.stopOne.replace(' ', "+")}).then(obj=> {
-                    // console.log(obj)
-                    // set the new date to a random result
+        GMM.getStopTwo({"location": date.location, "keyword": date.stopOne.replace(' ', "+")}).then(obj=> {
+            // set the new date to a random result
+            // debugger
+            if(obj.status==="OK"){
+                newDate.stop_one = obj["results"][getRandomInt(obj["results"].length)]
+            }
+            else{
+                // console.log(obj, 'stop 1')
+                GMM.getStopTwo({"location": date.location, "keyword": 'park'}).then(obj=> {
                     newDate.stop_one = obj["results"][getRandomInt(obj["results"].length)]
                 })
             }
-            // for the second stop
-            if(i===1){
-                GMM.getStopTwo({location: date.location, keyword: date.stopTwo}).then(obj=> {
+            
+        }).then(()=> {
+            GMM.getStopTwo({"location": date.location, "keyword": date.stopTwo.replace(' ', "+")}).then(obj=> {
+                // set the new date to a random result
+                // debugger
+                if(obj.status === 'OK'){
+                    // console.log(obj)
                     newDate.stop_two = obj["results"][getRandomInt(obj["results"].length)]
-                })
-            }
-            // for the third stop
-            if(i===2 || date.stopThree !== ""){
-                GMM.getStopTwo({location: date.location, keyword: date.stopThree}).then(obj=> {
-                    newDate.stop_three = obj["results"][getRandomInt(obj["results"].length)]
-                    // set completed new date with google map objects to state
-                    setCompDate(newDate)
-                    //set loading to false
-                    setIsLoading(false)
-                })
-            }
-        }
+                }
+                else if(diet !== 'just-drinks'){
+                    GMM.getStopTwo({"location": date.location, "keyword": 'food'}).then(obj=> {
+                        newDate.stop_two = obj["results"][getRandomInt(obj["results"].length)]
+                    })
+                }
+                else if(diet === 'just-drinks'){
+                    GMM.getStopTwo({"location": date.location, "keyword": 'bar'}).then(obj=> {
+                        newDate.stop_two = obj["results"][getRandomInt(obj["results"].length)]
+                    })
+                }
         
+                
+            })
+        }).then(()=> {
+            GMM.getStopTwo({location: date.location, keyword: date.stopThree}).then(obj=> {
+                // debugger
+                if(obj.status === "OK"){
+                    newDate.stop_three = obj["results"][getRandomInt(obj["results"].length)]
+                    console.log(newDate)
+                    setCompDate(newDate)
+                    setIsLoading(false)
+                }
+                else {
+                    newDate.stop_three = {}
+                    console.log(newDate)
+                    setCompDate(newDate)
+                    setIsLoading(false)
+                }
+                // set completed new date with google map objects to state
+                // console.log(newDate)
+                
+                //set loading to false
+                
+            })
+        })
         
     })
     }
@@ -216,3 +251,10 @@ const NewDate = props => {
     
 }
 export default NewDate
+
+
+
+
+
+
+
