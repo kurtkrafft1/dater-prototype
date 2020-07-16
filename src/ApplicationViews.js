@@ -75,6 +75,14 @@ const ApplicationViews = props => {
             
         }}
         />
+        <Route
+        path = ""
+        render = {
+            props => {
+                return <Redirect to="/login" />
+            }
+        }
+        />
         
         </>
     )
