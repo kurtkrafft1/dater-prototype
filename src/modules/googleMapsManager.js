@@ -10,22 +10,22 @@ export default {
         console.log(`${url}location=${obj.location}&radius=1500&keyword=${obj.keyword}&key=${keys.google}`)
         return fetch(`${url}location=${obj.location}&radius=1500&keyword=${obj.keyword}&key=${keys.google}`, {
             method: "GET",
-            // mode: 'no-cors'
-            // headers: {
-            //     'Acc'
-            // }
+            mode: 'no-cors',
+            headers: {
+                'Access-control-origin': "*"
+            }
         }).then(r=> console.log(r))
     },
     getStopTwo(obj){
        
-        console.log(`${url}location=${obj.location}&radius=1500&keyword=${obj.keyword}&key=${keys.google}`)
+        console.log(`stop: ${obj.stop}, keyword: ${obj.keyword}`)
         return fetch(proxyurl + `${url}location=${obj.location}&radius=1500&keyword=${obj.keyword}&key=${keys.google}`) // https://cors-anywhere.herokuapp.com/https://example.com
         .then(response => response.json())
         .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
     },
     getPlacePhoto(ref){
-        return fetch(proxyurl + `${url}maxwidth=400&photoreference=${ref}&key=${keys.google}`) // https://cors-anywhere.herokuapp.com/https://example.com
-        .then(response => {console.log(response.url);response.json()})
+        return fetch(proxyurl + `${picUrl}maxwidth=400&maxheight=200&photoreference=${ref}&key=${keys.google}`) // https://cors-anywhere.herokuapp.com/https://example.com
+        // .then(response => response.json())
         .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
     }
    
