@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Want to use Datr prototype? Follow the instructions bellow to run the application.
 
-## Available Scripts
+1. Create a new directory in your terminal by doing `mkdir d8r_prototype`. Then make 2 more directories one called `d8r_api` and one called `d8r_react`. Clone down this repository into the `d8r_react` folder by running the following command in the root of that directory `git clone git@github.com:kurtkrafft1/dater-prototype.git`.
 
-In the project directory, you can run:
+1. get into the root of the repo by running `cd dater-prototype`.
 
-### `npm start`
+1. Run `npm install` and wait for all dependencies to be installed.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Note: Within `src/modules` is a file called `baseurl.js` this file will hold the url location for the API. If your api runs on a different server than `http://localhost:8000/` you will need to change the url in this file to that one.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+1. NOTE 2: There is a trailing slash for that url!!!!
 
-### `npm test`
+1. here is how you set up the API:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Go to https://github.com/kurtkrafft1/dater_prototype_api and follow the instructions to set up the API in a separate directory from the Datr Client directory. Then complete the next two steps.
 
-### `npm run build`
+1. lastly we need to make a keys file so `cd src && touch keys.js`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. enter `code .` to open your IDE and add some stuff to the keys.js
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. add the following:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   const keys = {
+   "google": "YOUR KEY HERE"
+   }
+   export default keys
 
-### `npm run eject`
+1. You will need to acquire a google maps api key and enter it where it says "YOUR KEY HERE" it must be a string
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. https://developers.google.com/maps/documentation/javascript/get-api-key will help with that proccess
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Run `npm start` in the root directory and NOT the src to verify that installation was successful and start the application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. I set up the css specifically for a mobile app (didn't know flutter when I originally made this) so open up your google chrome dev tools and hit the phone view mode to use the app so it will make sense
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. this version is incomplete the roll the dice feature doesn't work yet, but the view full date feature kind of works. The algorithm is a little off. Sometimes hotels will end up in there lol and sometimes parking garages will show up, so trying to eliminate from what google maps places returns will be a little tricky.
 
-## Learn More
+1. The facebook login doesn't work, For some reason I couldn't get authenticated on the facebook developers page :/ so I couldn't register the app, but I just followed a youtube video for setting that up I can send a link to whomever
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. this app is super barebones and needs some more work to get all te v1 features up and running but most everything after the dates is just basic get/post requests from the api to fetch dates and post favorite dates and lastly to update user information
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Go to http://localhost:3000/ to view the app.
 
-### Code Splitting
+## Tech Stack
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+1. React
+1. HTML
+1. CSS
+1. Javascript
+1. react burger menu
 
-### Analyzing the Bundle Size
+## LOGIN INFO
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. if you would like to login with pre-made information here are some fake users
 
-### Making a Progressive Web App
+1. you can also login in yourself by clicking "Use Email" then clicking "Sign Up" an email verification link will be sent to your email and after you follow the link you can use your own account
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Email: kurt@krafft.com
+- Password: testword1
 
-### Advanced Configuration
+##
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Made by Kurt Krafft
